@@ -1,6 +1,15 @@
 openstack-single-node-ovs
 =========================
 
+Contents:
+Nona
+Quantum 
+Glance
+Keystone
+Horizon
+
+Installation:
+
 Openstack single node test installation with OVS (OpenVswitch)
 
 1. Install git on the machine
