@@ -1,7 +1,7 @@
-<h2>openstack-single-node-ovs</h2>
+openstack-single-node-ovs
 =========================
 
-<b>Openstack single node test installation with OVS (OpenVswitch)</b>
+Openstack single node test installation with OVS (OpenVswitch)
 
 1. Install git on the machine
  "apt-get update -y |
