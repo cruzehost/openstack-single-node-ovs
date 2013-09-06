@@ -166,7 +166,7 @@ def _create_keystone_users():
 
 
     #keystone
-    keystone_service = execute("keystone service-create --name="Identity Service" --type=identity --description='Keystone Identity Service'|grep ' id '|awk '{print $4}'")
+    keystone_service = execute("keystone service-create --name='Identity Service' --type=identity --description='Keystone Identity Service'|grep ' id '|awk '{print $4}'")
     execute("keystone endpoint-create --region region --service_id=%s --publicurl=http://%s:5000/v2.0 --internalurl=http://127.0.0.1:5000/v2.0 --adminurl=http://127.0.0.1:35357/v2.0" % (keystone_service, ip_address))
 
 
@@ -174,7 +174,7 @@ def _create_keystone_users():
     glance_user = execute("keystone user-create --tenant_id %s --name glance --pass glance --enabled true|grep ' id '|awk '{print $4}'" % service_tenant)
     execute("keystone user-role-add --user_id %s --tenant_id %s --role_id %s" % (glance_user, service_tenant, admin_role))
 
-    glance_service = execute("keystone service-create --name="Image Service" --type=image --description='Glance Image Service'|grep ' id '|awk '{print $4}'")
+    glance_service = execute("keystone service-create --name='Image Service' --type=image --description='Glance Image Service'|grep ' id '|awk '{print $4}'")
     execute("keystone endpoint-create --region region --service_id=%s --publicurl=http://%s:9292/v2 --internalurl=http://127.0.0.1:9292/v2 --adminurl=http://127.0.0.1:9292/v2" % (glance_service, ip_address))
 
 
@@ -182,7 +182,7 @@ def _create_keystone_users():
     nova_user = execute("keystone user-create --tenant_id %s --name nova --pass nova --enabled true|grep ' id '|awk '{print $4}'" % service_tenant)
     execute("keystone user-role-add --user_id %s --tenant_id %s --role_id %s" % (nova_user, service_tenant, admin_role))
 
-    nova_service = execute("keystone service-create --name="Compute Service" --type=compute --description='Nova Compute Service'|grep ' id '|awk '{print $4}'")
+    nova_service = execute("keystone service-create --name='Compute Service' --type=compute --description='Nova Compute Service'|grep ' id '|awk '{print $4}'")
     execute("keystone endpoint-create --region region --service_id=%s --publicurl='http://%s:8774/v2/$(tenant_id)s' --internalurl='http://127.0.0.1:8774/v2/$(tenant_id)s' --adminurl='http://127.0.0.1:8774/v2/$(tenant_id)s'" % (nova_service, ip_address))
 
 
@@ -190,7 +190,7 @@ def _create_keystone_users():
     quantum_user = execute("keystone user-create --tenant_id %s --name quantum --pass quantum --enabled true|grep ' id '|awk '{print $4}'" % service_tenant)
     execute("keystone user-role-add --user_id %s --tenant_id %s --role_id %s" % (quantum_user, service_tenant, admin_role))
 
-    quantum_service = execute("keystone service-create --name="Network Service" --type=network  --description='OpenStack Networking service'|grep ' id '|awk '{print $4}'")
+    quantum_service = execute("keystone service-create --name='Network Service' --type=network  --description='OpenStack Networking service'|grep ' id '|awk '{print $4}'")
     execute("keystone endpoint-create --region region --service_id=%s --publicurl=http://%s:9696/ --internalurl=http://127.0.0.1:9696/ --adminurl=http://127.0.0.1:9696/" % (quantum_service, ip_address))
 
     #write a rc file
